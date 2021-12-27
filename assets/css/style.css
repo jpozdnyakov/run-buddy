@@ -25,6 +25,14 @@ header {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-image: url('../images/hero-bg.jpg');
+  background-size: cover;
+  background-position: 80%;
+  background-attachment: fixed;
+  z-index: 9999;
 }
 
 header h1 {
@@ -55,8 +63,15 @@ header nav ul li a {
   padding: 10px 15px;
   font-weight: lighter;
   font-size: 1.55vw;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+header nav ul li a:hover {
+  background: var(--primary-color);
+  color:--secondary-color;
+  border-radius: 15px;
+  text-shadow: none;
+}
 
 footer {
   background:var(--primary-color);
@@ -90,11 +105,12 @@ section {
 .hero {
   background-image: url('../images/hero-bg.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: 80%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  align-items: flex-start
+  align-items: flex-start;
+  background-attachment: fixed;
 }
 
 .hero-cta {
@@ -119,6 +135,69 @@ section {
   color:var(--secondary-color);
   width: 40%;
   margin: 3.5%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+}
+
+.checkbox-wrapper input, .radio-wrapper input {
+  opacity: 0;
+}
+
+.checkbox-wrapper label, .radio-wrapper label {
+  position: relative;
+  left: 10px;
+  margin: 10px;
+  line-height: 1.6;
+}
+
+
+.checkbox-wrapper label::before, .radio-wrapper label::before {
+  content: "";
+  height: 20px;
+  width: 20px;
+  background: rgba(255, 255, 255, 0.75);  
+  border: 1px solid var(--secondary-color);  
+  position: absolute;
+  top: -4px;
+  left: -30px;
+}
+
+.radio-wrapper label::before {
+  border-radius: 50%;
+}
+
+.radio-wrapper label::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background:var(--secondary-color);
+  position: absolute;
+  left: -29px;
+  top: -3px;
+  background-image: radial-gradient(circle,var(--tertiary-color), #024e76);
+}
+
+.checkbox-wrapper label::after {
+  content: "";
+  height: 6px;
+  width: 14px;
+  border-left: 2px solid #024e76;
+  border-bottom: 2px solid #024e76;
+  position: absolute;
+  left: -26px;
+  top: 1px;
+  transform: rotate(-58deg);
+}
+
+.checkbox-wrapper input + label::after, 
+.radio-wrapper input + label::after {
+  content: none;
+}
+
+.checkbox-wrapper input:checked + label::after, 
+.radio-wrapper input:checked + label::after {
+  content: "";
 }
 
 .hero-form h3 {
@@ -137,6 +216,13 @@ section {
   color:var(--secondary-color);
   width: 100%;
   margin-bottom: 15px; 
+  border-radius: 10px;
+  background-color: rgba(255,255,255, 0.75);
+}
+
+.form-input:focus {
+  background-color: rgba(255,255,255, 1);
+  outline: none;
 }
 
 .hero-form label {
@@ -149,8 +235,12 @@ section {
   border: none;
   padding: 10px 20px;
   font-size: 16px;
+  border-radius: 10px
 } 
 
+.hero-form button:hover {
+  background-color:var(--tertiary-color);  
+}
 
 .section-title {
   font-size: 48px;
@@ -194,6 +284,10 @@ section {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+}
+
+.step:not(:last-child) {
+  border-bottom: 1px solid var(--tertiary-color);
 }
 
 .step h3 {
@@ -321,6 +415,13 @@ section {
   width: 100%;
   margin-bottom: 15px;
   margin-top: 5px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255, 0.75);
+}
+
+.contact-form input, .contact-form textarea:focus {
+  background-color: rgba(255,255,255, 1);
+  outline: none;
 }
 
 .contact-form button {
@@ -331,6 +432,11 @@ section {
   text-align: center;
   padding: 15px 0;
   font-size: 16px;
+  border-radius: 10px
+}
+.contact-form button:hover {
+  color: var(--primary-color);
+  background:var(--tertiary-color);
 }
 
 .contact-info a {
@@ -355,11 +461,13 @@ section {
   header {
     padding-bottom: 0;
     justify-content: center;
+    position: relative
   }
 
   header h1 {
     width: 100%;
     text-align: center;
+    
   }
 
   header nav ul {
@@ -370,6 +478,7 @@ section {
 
   header nav ul li a {
     font-size: 20px;
+   
   }
 
   footer h2, footer div {
@@ -461,3 +570,4 @@ section {
   }
  
 }
+
